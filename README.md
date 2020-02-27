@@ -27,8 +27,8 @@ To reserve a particular node include the folowing:
 	-from qrsh: `-q @<name_of_node>`  
 	-from your bash script: `-q *@<name_of_node>` **I havent test this one yet!**    
 
-You can aldo use while cards to chose a group of nodes. \
-For instance, lest supose you want your job to get only the fastest nodes that are 'intel-gold'. \
+Also, you can use wild cards to chose a group of nodes. \
+For instance, lest supose you want your job to get only the fastest nodes in Hoffman (intel-gold). \
 You must add in the head of your bash scrip the folowing:  
 
 `
