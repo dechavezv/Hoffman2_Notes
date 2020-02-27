@@ -1,7 +1,7 @@
 
 # Get the list of nodes
 
-To get the list of nodes that we have purchased but are shared with others. Type fhe folowing:
+To get the list of nodes that we have purchased but are shared with labs. Type fhe folowing:
 `qhost -l group=mcdb`  
 **Note**:acess these nodes with `highp`  
 
