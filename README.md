@@ -25,7 +25,7 @@ For the total amount of nodes available to you including the ones outside our gr
 # Get an specific node
 To reserve a particular node include the folowing:  
 	-from qrsh: `-q @<name_of_node>`  
-	-from your bash script: `-q *@<name_of_node>`  
+	-from your bash script: `-q *@<name_of_node>` **I havent test this one yet!**    
 
 You can aldo use while cards to chose a group of nodes. \
 For instance, lest supose you want your job to get only the fastest nodes that are 'intel-gold'. \
