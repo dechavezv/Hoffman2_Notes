@@ -44,7 +44,7 @@ type of request that you pass to hoffman. Here are two common problems:
 by increasing the virtual memory with the command `h_vmem=`.   
 Because the virtual memory is a space that you shared with other users keep in mind that increasing the virtual memory too much, will harm other users.  
 To avoid memory issues with other users you can get a whole node for your job with: \
-`exclusive`. Your header should look something like this `qrsh -l highmem,highp,**exclusive**,h_rt=48:00:00`
+`exclusive`. Your header should look something like this `qrsh -l highmem,highp,exclusive,h_rt=48:00:00`
 
 2. **When you paralilize your jobs** (Thanks kirk's lab for the info !!!). When you include `-pe`, every independent job has its own virtual memory, 
 so one posible solution is to include in the header of your script an specific amount of virtual memory with `h_vmem=`. \
