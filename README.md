@@ -22,7 +22,7 @@ For the total amount of nodes available to you including the ones outside our gr
 `qhost`  
 **Note**: to acess nodes outside our group exlude `highp` and `highmem` form the header of your script. Like this `-l h_rt=8:00:00,h_data=2G`  
 
-# Get an specific node
+# Get a specific node
 To reserve a particular node include the folowing:  
 	-from qrsh: `-q @<name_of_node>`  
 	-from your bash script: `-q *@<name_of_node>` **I havent test this one yet!**    
