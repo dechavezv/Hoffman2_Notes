@@ -13,13 +13,14 @@ You will notice that we have soemthing like:
 
 To list our **rwayne* node. Type fhe folowing:    
 `qhost -l group=rwayne`  
-**Note**:acess this node with `highmem`
+**Note**: acess this node with `highmem`
 
 You will notice that we have soemthng like:  
 24 slots and 504.8G for a single node  
 
-For the total amount of nodes avaialble to you. If you want those outside our groups exlude `highp` and `highmem`
-`qhost`
+For the total amount of nodes available to you including the ones outside our group. Type fhe folowing:  
+`qhost`  
+**Note**: to acess noides outside our groups exlude `highp` and `highmem` form the header of your script. Like this `-l h_rt=8:00:00,h_data=2G`  
 
 # Get an specific node
 To reserve a particular node include the folowing:  
