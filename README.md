@@ -46,20 +46,20 @@ Because the virtual memory is a space that you shared with other users keep in m
 To avoid memory issues with other users you can get a whole node for your job with: \
 `exclusive`. Your header should look something like this `qrsh -l highmem,highp,**exclusive**,h_rt=48:00:00`
 
-2. **When you paralilize your jobs** (Thanks kirk's lab for the info !!!). When you include `-pe`, every independent job has its own virtual memory, \
+2. **When you paralilize your jobs** (Thanks kirk's lab for the info !!!). When you include `-pe`, every independent job has its own virtual memory, 
 so one posible solution is to include in the header of your script an specific amount of virtual memory with `h_vmem=`. \
 This amount should be at least the sum of the virtual memmory of all the independet ones. One easy fix, sugested by Jazlyn from kirk's lab, is to request a h_vmem equal to the product of h_data times the number of slots requested.  
  
-**IMPORTANT* Regardless if you add in your script header `h_vmem=`, every job has its own virtual memory. You can find out what is the amount of virtual memory \
+**IMPORTANT** Regardless if you add in your script header `h_vmem=`, every job has its own virtual memory. You can find out what is the amount of virtual memory \
 of job by typing:  
 `qstat -j <name_of_job> | grep 'resour'` 
 
 # Parallelizing your jobs.
 There are two ways to Parallelize your jobs: `-pe shared` and `-pe dc*`.  
 
-`-pe shared`: will look for cores at the same node. In case of `-pe dc*` it will look at cores in different nodes.  
+`-pe shared` will look for cores at the same node. In case of `-pe dc*` it will look at cores in different nodes.  
 
-The advantage of `-pe shared` is that once it has started it may run faster. However, because hoffman is looking for a node with \
+The advantage of `-pe shared` is that once it has started it may run faster. However, because hoffman is looking for a node with 
 a particular number of cores, it may take longer to start. In contrast, `-pe dc*` can chose cores from whatever node its availalbe, thus making the waiting time shorter. \
 The downside of `-pe dc*` is that it may take longer to run since it has to collect information for multiple nodes. The recomnedation is to use \
 `-pe shared` if your program is multi-threaded, which means that uses shared-memory. You should use `-pe dc*` if your program uses a MPI-style that handles multi-node jobs.
