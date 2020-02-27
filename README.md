@@ -54,7 +54,7 @@ This amount should be at least the sum of the virtual memmory of all the indepen
 of job by typing:  
 `qstat -j <name_of_job> | grep 'resour'` 
 
-# Parallelizing your jobs.
+# Parallelizing your jobs
 There are two ways to parallelize your jobs in Hoffman: `-pe shared` and `-pe dc*`.  
 
 `-pe shared` will look for cores at the same node. In case of `-pe dc*` it will look for cores at different nodes.  
