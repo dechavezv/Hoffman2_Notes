@@ -64,3 +64,51 @@ The downside of `-pe dc*` is that it may take longer to run since it has to coll
 **`-pe shared` if your program is multi-threaded**, which means that uses shared-memory. You should use **`-pe dc*` if your program uses a MPI-style** that handles multi-node jobs.
 
 For more information go [here](https://github.com/schuang/hoffman2-job-scheduling-tutorial/tree/master/pdf).  
+
+
+# Some basics in Hoffman2
+
+`qsub`	#Submit a Job  
+`qstat`	#Determine the Status of a Job  
+`qhost -j` <node.name>	#Display Node Information  
+`qdel`	#Cancel a Job  
+`qhold`	#Place a hold on a queued job to prevent it from running  
+`qrls`	#Release a job held with qhold  
+
+`qhost -j | grep 'HOS\|n6005'` # this will give you resources being used  
+The most important thing to look for is **MEMUSE** which is memory being used  
+
+If you job is pending and notice that you have to modify either the memory or time requested . Remember you can do this with `qalter` with the following steps:  
+
+1. Find all the -l arguments that your job uses. At the shell prompt, enter:  
+     `qstat -j jobnumber | grep 'hard resource_list'`
+where jobnumber is your job number. 
+Note: your job must in the queu to have a jobnumber; find it by typing 'myjob'. Also 
+you can only modify things if your job is pending at the queu `qw` if is laredy running `r` 
+there is nothign you can do about it.    
+The previous command returns something like:  
+`hard resource_list: h_data=4000M,h_rt=1209600,highp=true` 
+Use the qalter command to fix the job. At the shell prompt, enter:  
+`qalter -l h_data=4000M,highp=true,h_rt=288:00:00 jobnumber`  
+where 288:00:00 is no larger than the maximum highp h_rt value. In our case no more than 336:00:00  
+
+**What queues can I run my jobs in?**
+`qquota`  #If no resources are in use at the moment, qquota will not return any information.  
+
+After you have start runing a job 
+use the folowing to now **how much memory you should request**  
+`qacct -j job_ID`  
+
+You can find the maximum allowed time with:  
+`qconf -sq rwayne_pod.q | grep h_rt`  
+
+`highp-queue-name` is one of the highp queues from  
+`qconf -sql`  
+
+get an especific login.node. For instance this is how you get node login1. Important if you were running things as screen and sudenly you lost connection.  
+`ssh login1.hoffman2.idre.ucla.edu -l yourUsername`  
+
+Also this is usefule to get node for `lftp` trasfer. You have to get either 'dtn1 or dtn1' to use `lftp` and donwload sequences from UC Berkeley  
+`ssh dtn1.hoffman2.idre.ucla.edu -l yourUsername`  
+**Note**: you can also use the above to ftp into NCBI
+
