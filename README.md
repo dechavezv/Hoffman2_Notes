@@ -78,6 +78,9 @@ For more information go [here](https://github.com/schuang/hoffman2-job-schedulin
 `qhost -j | grep 'HOS\|n6005'` # this will give you resources being used  
 The most important thing to look for is **MEMUSE** which is memory being used  
 
+Check if any job from an array failed  
+`qacct -j <job-ID> | grep 'failed'`
+
 If you job is pending and notice that you have to modify either the memory or time requested . Remember you can do this with `qalter` with the following steps:  
 
 1. Find all the -l arguments that your job uses. At the shell prompt, enter:  
