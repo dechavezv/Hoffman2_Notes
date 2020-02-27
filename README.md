@@ -1,5 +1,5 @@
 
-# Get the list of nodes.
+# Get the list of nodes
 
 For our purchase nodes but shared with others. Acess these nodes with `highp`  
 `qhost -l group=mcdb`  
