@@ -55,12 +55,12 @@ of job by typing:
 `qstat -j <name_of_job> | grep 'resour'` 
 
 # Parallelizing your jobs.
-There are two ways to Parallelize your jobs: `-pe shared` and `-pe dc*`.  
+There are two ways to parallelize your jobs in Hoffman: `-pe shared` and `-pe dc*`.  
 
-`-pe shared` will look for cores at the same node. In case of `-pe dc*` it will look at cores in different nodes.  
+`-pe shared` will look for cores at the same node. In case of `-pe dc*` it will look for cores at different nodes.  
 
-The advantage of `-pe shared` is that once it has started it may run faster. However, because hoffman is looking for a node with 
-a particular number of cores, it may take longer to start. In contrast, `-pe dc*` can chose cores from whatever node its availalbe, thus making the waiting time shorter. \
+The advantage of `-pe shared` is that it may be faster once it has started to run. However, because hoffman is looking for a node with 
+a particular number of cores, it may remaing longer at the queue. In contrast, `-pe dc*` can chose cores from whatever node its availalbe, thus making the waiting time shorter. \
 The downside of `-pe dc*` is that it may take longer to run since it has to collect information for multiple nodes. The recomnedation is to use \
 `-pe shared` if your program is multi-threaded, which means that uses shared-memory. You should use `-pe dc*` if your program uses a MPI-style that handles multi-node jobs.
 
