@@ -20,7 +20,7 @@ You will notice that we have soemthng like:
 
 For the total amount of nodes available to you including the ones outside our group. Type fhe folowing:  
 `qhost`  
-**Note**: to acess noides outside our groups exlude `highp` and `highmem` form the header of your script. Like this `-l h_rt=8:00:00,h_data=2G`  
+**Note**: to acess nodes outside our group exlude `highp` and `highmem` form the header of your script. Like this `-l h_rt=8:00:00,h_data=2G`  
 
 # Get an specific node
 To reserve a particular node include the folowing:  
