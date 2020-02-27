@@ -1,17 +1,19 @@
 
 # Get the list of nodes
 
-For our purchase nodes but shared with others. Acess these nodes with `highp`  
+To get the list of nodes that we have purchased but are shared with others. Type fhe folowing:
 `qhost -l group=mcdb`  
+**Note**:acess these nodes with `highp`  
 
-You will notice that we have soemthng like:  
+You will notice that we have soemthing like:  
 12 slots and ~48G per node  
 16 slots and ~48G per node  
 16 slots and ~252G per node  
 24 slots and ~63G per node  
 
-For our own purchase nodes. Acess this node with `highmem`  
+To list our **rwayne* node. Type fhe folowing:    
 `qhost -l group=rwayne`  
+**Note**:acess this node with `highmem`
 
 You will notice that we have soemthng like:  
 24 slots and 504.8G for a single node  
