@@ -27,8 +27,7 @@ To reserve a particular node include the folowing:
 	-from qrsh: `-q @<name_of_node>`  
 	-from your bash script: `-q *@<name_of_node>` **I havent test this one yet!**    
 
-Also, you can use wild cards to chose a group of nodes. \
-For instance, lest supose you want your job to get only the fastest nodes in Hoffman (intel-gold). \
+Also, you can use wild cards to chose a group of nodes. For instance, to get only the fastest nodes in Hoffman (intel-gold). \
 You must add in the head of your bash scrip the folowing:  
 
 `
@@ -36,20 +35,21 @@ You must add in the head of your bash scrip the folowing:
 #$ -l h_rt=8:00:00,h_data=2G,arch=intel-gold* # arch means architecture
 `
 
-# Jobs being killed due to memmory issues.
-Beacuse Hoffman2 uses a linux system, it will look for the virtual memmory of your job. \
-Sometimes the virtual memory higher than the actually memory you have requested with `h_data=`. How much higher? It will depend on the program and \
-type of request you are doing.  
+# Jobs being killed due to memory issues.
+Beacuse Hoffman2 uses a linux system, it will look for the virtual memmory of your job not h_data. \
+Sometimes the virtual memory is higher than the amount you have requested with `h_data=`. How much higher? It depends on the program as well as the 
+type of request that you pass to hoffman. Here are two common problems:
 
-For instance, **programs that use java** like GATK use a lot of virtual memory. You can solve this
-by increasing the virtual memory with the command `h_vmem=`. 
-Because the virtual memory is a space that you shared with other users keep in mind that increasing memory too much will harm other users.  
+1. **Programs that use java** like GATK use a lot of virtual memory. You can solve this
+by increasing the virtual memory with the command `h_vmem=`.   
+Because the virtual memory is a space that you shared with other users keep in mind that increasing the virtual memory too much, will harm other users.  
+ 
 To avoid memory issues with other users you can get a whole node for your job with: \
 `exclusive`. Your header should look something like this `qrsh -l highmem,highp,**exclusive**,h_rt=48:00:00`
 
-Seems to be that another issue with virtual memory is **when you paralilize your jobs** (Thanks kirk's lab for the info !!!). When you include `-pe`, every independent job has its own virtual memory, \
+2. **When you paralilize your jobs** (Thanks kirk's lab for the info !!!). When you include `-pe`, every independent job has its own virtual memory, \
 so one posible solution is to include in the header of your script an specific amount of virtual memory with `h_vmem=`. \
-This amount should be at least the sum of the virtual memmory of all the independet ones. One easy fix sugested by Jazlyn from kirk's lab is to request a h_vmem equal to the product of h_data times the number of slots requested.  
+This amount should be at least the sum of the virtual memmory of all the independet ones. One easy fix, sugested by Jazlyn from kirk's lab, is to request a h_vmem equal to the product of h_data times the number of slots requested.  
  
 **IMPORTANT* Regardless if you add in your script header `h_vmem=`, every job has its own virtual memory. You can find out what is the amount of virtual memory \
 of job by typing:  
