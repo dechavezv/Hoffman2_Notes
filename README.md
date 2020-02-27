@@ -43,12 +43,10 @@ type of request that you pass to hoffman. Here are two common problems:
 1. **Programs that use java** like GATK use a lot of virtual memory. You can solve this
 by increasing the virtual memory with the command `h_vmem=`.   
 Because the virtual memory is a space that you shared with other users keep in mind that increasing the virtual memory too much, will harm other users.  
-To avoid memory issues with other users you can get a whole node for your job with: \
-`exclusive`. Your header should look something like this `qrsh -l highmem,highp,exclusive,h_rt=48:00:00`
+To avoid memory issues with other users you can get a whole node for your job with `exclusive`. Your header should look something like this `qrsh -l highmem,highp,exclusive,h_rt=48:00:00`
 
 2. **When you paralilize your jobs** (Thanks kirk's lab for the info !!!). When you include `-pe`, every independent job has its own virtual memory, 
-so one posible solution is to include in the header of your script an specific amount of virtual memory with `h_vmem=`. \
-This amount should be at least the sum of the virtual memmory of all the independet ones. One easy fix, sugested by Jazlyn from kirk's lab, is to request a h_vmem equal to the product of h_data times the number of slots requested.  
+so one posible solution is to include in the header of your script an specific amount of virtual memory with `h_vmem=`. This amount should be at least the sum of the virtual memmory of all the independet ones. One easy fix, sugested by Jazlyn from kirk's lab, is to request a h_vmem equal to the product of h_data times the number of slots requested.  
  
 **IMPORTANT** Regardless if you add in your script header `h_vmem=`, every job has its own virtual memory. You can find out what is the amount of virtual memory \
 of job by typing:  
