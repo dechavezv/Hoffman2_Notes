@@ -1,5 +1,5 @@
 
-#Get the list of nodes.
+# Get the list of nodes.
 
 For our purchase nodes but shared with others. Acess these nodes with `highp`  
 `qhost -l group=mcdb`  
@@ -19,7 +19,7 @@ You will notice that we have soemthng like:
 For the total amount of nodes avaialble to you. If you want those outside our groups exlude `highp` and `highmem`
 `qhost`
 
-#Get an specific node
+# Get an specific node
 To reserve a particular node include the folowing:  
 	-from qrsh: `-q @<name_of_node>`  
 	-from your bash script: `-q *@<name_of_node>`  
