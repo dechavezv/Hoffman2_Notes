@@ -92,11 +92,11 @@ Use the qalter command to fix the job. At the shell prompt, enter:
 `qalter -l h_data=4000M,highp=true,h_rt=288:00:00 jobnumber`  
 where 288:00:00 is no larger than the maximum highp h_rt value. In our case no more than 336:00:00  
 
-**What queues can I run my jobs in?**
-`qquota`  #If no resources are in use at the moment, qquota will not return any information.  
+**What queues can I run my jobs in?**  
+`qquota` #If no resources are in use at the moment, qquota will not return any information.  
 
 After you have start runing a job 
-use the folowing to now **how much memory you should request**  
+use the folowing to know **how much memory you should request**  
 `qacct -j job_ID`  
 
 You can find the maximum allowed time with:  
