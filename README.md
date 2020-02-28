@@ -52,6 +52,20 @@ so one posible solution is to include in the header of your script an specific a
 of job by typing:  
 `qstat -j <name_of_job> | grep 'resour'` 
 
+If everthing is taken and your job doesn't start you could potentially check for space yourself and adjust the memory you request acordingly. One "brute force" way to do it is to loop through the nodes and run "qhost -F -h" and check for nonzero "slot" and "h_data", e.g.  
+
+`$ qhost -F -h n7157|grep slot`  
+   hc:slots=8  
+`$ qhost -F -h n7157|grep h_data`  
+   hc:h_data=0.000  
+
+If both slots and h_data are nonzero, potentially you can get on the node. Be aware that jobs go in and out of the nodes all the time; by the time you finish typing qrsh, it is possible that the spot that you just discovered has been taken.  
+
+But there are other potential complexities. Some special nodes may require additional parameters (e.g. "highmem"). Some group-owned nodes may be undergoing a draining process; unless you are in that group and use "highp", you may not be able to get on it.  
+
+Another way is to request the minimally acceptable (for your purpose) memory/time, and let the scheduler to do the search for you.  
+
+
 # Parallelizing your jobs
 There are two ways to parallelize your jobs in Hoffman: `-pe shared` and `-pe dc*`.  
 
