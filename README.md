@@ -1,9 +1,9 @@
 
 # Get the list of nodes
 
-To get the list of nodes that we have purchased but are shared with labs. Type fhe folowing:  
+To get the list of nodes that we had purchased but are shared with labs. Type fhe folowing:  
 `qhost -l group=mcdb`  
-**Note**:acess these nodes with `highp`  
+**Note**: acess these nodes with `highp`  
 
 You will notice that we have soemthing like:  
 12 slots and ~48G per node  
@@ -20,7 +20,7 @@ You will notice that we have soemthng like:
 
 For the total amount of nodes available to you including the ones outside our group. Type fhe folowing:  
 `qhost`  
-**Note**: to acess nodes outside our group exlude `highp` and `highmem` form the header of your script. Like this `-l h_rt=8:00:00,h_data=2G`  
+**Note**: to acess nodes outside our group exlude `highp` and `highmem` from the header of your script. Like this `-l h_rt=8:00:00,h_data=2G`  
 
 # Get a specific node
 To reserve a particular node include the folowing:  
@@ -36,7 +36,7 @@ You must add in the head of your bash scrip the folowing:
 `
 
 # Jobs being killed due to memory issues.
-Beacuse Hoffman2 uses a linux system, it will look for the virtual memmory of your job not h_data. \
+Beacuse Hoffman2 uses a linux system, it will look for the virtual memory of your job not h_data. \
 Sometimes the virtual memory is higher than the amount you have requested with `h_data=`. How much higher? It depends on the program as well as the 
 type of request that you pass to hoffman. Here are two common problems:
 
@@ -46,7 +46,7 @@ Because the virtual memory is a space that you shared with other users keep in m
 To avoid memory issues with other users you can get a whole node for your job with `exclusive`. Your header should look something like this `qrsh -l highmem,highp,exclusive,h_rt=48:00:00`
 
 2. **When you paralilize your jobs** (Thanks kirk's lab for the info !!!). When you include `-pe`, every independent job has its own virtual memory, 
-so one posible solution is to include in the header of your script an specific amount of virtual memory with `h_vmem=`. This amount should be at least the sum of the virtual memmory of all the independet ones. One easy fix, sugested by Jazlyn from kirk's lab, is to request a h_vmem equal to the product of h_data times the number of slots requested.  
+so one posible solution is to include in the header of your script an specific amount of virtual memory with `h_vmem=`. This amount should be at least the sum of the virtual memory of all independent jobd. One easy fix, sugested by Jazlyn from kirk's lab, is to request a h_vmem equal to the product of h_data times the number of slots requested.  
  
 **IMPORTANT** Regardless if you add in your script header `h_vmem=`, every job has its own virtual memory. You can find out what is the amount of virtual memory \
 of job by typing:  
