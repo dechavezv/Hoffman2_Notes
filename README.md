@@ -47,6 +47,8 @@ If both slots and h_data are nonzero, potentially you can get on the node. Be aw
 
 But there are other potential complexities. Some special nodes may require additional parameters (e.g. "highmem"). Some group-owned nodes may be undergoing a draining process; unless you are in that group and use "highp", you may not be able to get on it.
 
+`for line in $(cat ~/list.of.nodes.txt); do (echo $line && qhost -F -h $line | grep 'slot\|h_data');done`  
+
 # Jobs being killed due to memory issues.
 Beacuse Hoffman2 uses a linux system, it will look for the virtual memory of your job not h_data. \
 Sometimes the virtual memory is higher than the amount you have requested with `h_data=`. How much higher? It depends on the program as well as the 
@@ -77,6 +79,7 @@ The downside of `-pe dc*` is that it may take longer to run since it has to coll
 
 For more information go [here](https://github.com/schuang/hoffman2-job-scheduling-tutorial/tree/master/pdf).  
 
+In case you have try diferent amouts of virtual memmory and keeps being killed, you can do `h_vmem=INFINITI`.  
 
 # Some basics in Hoffman2
 
